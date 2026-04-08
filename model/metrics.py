@@ -15,7 +15,6 @@ def MAE(y, y_pred):
     '''
     Mean Absolute Error Loss
     '''
-    # TODO
     pass
 
 # Here is a loss function for logistic regression
@@ -33,12 +32,16 @@ def evaluate_linear_regression(y_true, y_pred, title='Linear Regression Evaluati
     y_true = np.asarray(y_true).ravel()
     y_pred = np.asarray(y_pred).ravel()
 
-    # TODO 
+    mse = mean_squared_error(y_true, y_pred)
+    mae = mean_absolute_error(y_true, y_pred)
+    rmse = np.sqrt(mse)
+    r2 = r2_score(y_true, y_pred)
+
     metrics = {
-        'MSE': 'TODO: use sklearn.metrics to compute MSE',
-        'MAE': 'TODO: use sklearn.metrics to compute MAE',
-        'RMSE': 'TODO: use sklearn.metrics and numpy to compute RMSE',
-        'R-squared': 'TODO: use sklearn.metrics to compute R-squared',
+        'MSE': mse,
+        'MAE': mae,
+        'RMSE': rmse,
+        'R-squared': r2,
     }
 
     print(f"=== {title} ===")
@@ -52,12 +55,16 @@ def evaluate_binary_classifier(y_true, y_pred, title='Model Evaluation'):
     y_true = np.asarray(y_true).ravel().astype(int)
     y_pred = np.asarray(y_pred).ravel().astype(int)
 
-    # TODO 
+    acc = accuracy_score(y_true, y_pred)
+    prec = precision_score(y_true, y_pred, zero_division=0)
+    rec = recall_score(y_true, y_pred, zero_division=0)
+    f1 = f1_score(y_true, y_pred, zero_division=0)
+
     metrics = {
-        'Accuracy': 'TODO: use sklearn.metrics to compute accuracy',
-        'Precision': 'TODO: use sklearn.metrics to compute Precision',
-        'Recall': 'TODO: use sklearn.metrics to compute Recall',
-        'F1-score': 'TODO: use sklearn.metrics to compute F1-score'
+        'Accuracy': acc,
+        'Precision': prec,
+        'Recall': rec,
+        'F1-score': f1
     }
 
     print(title)
